@@ -1,0 +1,15 @@
+{
+    "rooms": {
+        "living": {}, 
+        "offices": {
+            "nam11": {
+                "name": "NAME", 
+                "occupants": []
+            }, 
+            "nam18": {
+                "name": "NAME", 
+                "occupants": []
+            }
+        }
+    }
+}
