@@ -1,6 +1,6 @@
 import user, room, json, allocation, functions
 
-'''
+
 source = raw_input("Enter 1 to add user data manually or 2 to select an existing file:\n")
 
 
@@ -11,8 +11,8 @@ while source != "1" and source != "2":
 if source == "1":
 	functions.addUser()
 elif source == "2":
-functions.readInput('rooms.txt', "rooms")
-
+	functions.readInput('rooms.txt', "rooms")
+'''
 
 source = raw_input("Enter 1 to add user data manually or 2 to select an existing file:\n")
 

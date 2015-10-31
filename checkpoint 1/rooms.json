@@ -1,13 +1,42 @@
 {
     "rooms": {
-        "living": {}, 
+        "living": {
+            "roo31": {
+                "name": "ROOM3", 
+                "occupants": []
+            }, 
+            "roo38": {
+                "name": "ROOM1", 
+                "occupants": []
+            }
+        }, 
         "offices": {
             "nam11": {
                 "name": "NAME", 
-                "occupants": []
+                "occupants": [
+                    1, 
+                    2, 
+                    3, 
+                    4
+                ]
             }, 
             "nam18": {
                 "name": "NAME", 
+                "occupants": [
+                    "thi34", 
+                    "thi34"
+                ]
+            }, 
+            "nam34": {
+                "name": "NAME", 
+                "occupants": []
+            }, 
+            "roo38": {
+                "name": "ROOM2", 
+                "occupants": []
+            }, 
+            "tan53": {
+                "name": "TANDAO", 
                 "occupants": []
             }
         }

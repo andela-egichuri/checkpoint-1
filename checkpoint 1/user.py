@@ -49,7 +49,7 @@ class User(object):
 	def printUsers(self, user_type):
 		pass
 
-	def unallocated(self):
+	def unallocated(self, user_type):
 		userlist = ""
 		with open('users.json', 'r') as f:
 			data = json.load(f)
@@ -59,13 +59,15 @@ class User(object):
 				users = data["users"]["staff"]
 
 			for key in users:
-				print users[key]
-				'''if alloc_key not in users[key]:
+				#print users[key]
+				alloc_key = "office"
+				if alloc_key not in users[key] or users[key][alloc_key] == "":
 					userlist = userlist + key + "\t" + user_type + "\t"
 					for each, value in users[key].iteritems():
-						userlist = userlist + value + "\t" '''
+						userlist = userlist + value + "\t\t" 
+					userlist = userlist + "\n"	
 
-				#userlist = userlist + "\n"
+				
 		return userlist
 
 
@@ -82,10 +84,29 @@ class User(object):
 			#print users[key]
 			userlist = userlist + key + "\t" + user_type + "\t"
 			for each, value in users[key].iteritems():
-				userlist = userlist + value + "\t"
+				userlist = userlist + value + "\t\t"
 
 			userlist = userlist + "\n"
 		return userlist
 
-#print listUsers()
-print unallocated()
+	def getUser(self, user_id, user_type):	
+		userlist = {}	
+		with open('users.json', 'r') as f:
+			data = json.load(f)
+			if user_type == "F":
+				users = data["users"]["fellows"]
+			elif user_type == "S":
+				users = data["users"]["staff"]
+
+		if user_id in users:
+			#print users[key]
+			userlist["userID"] = user_id
+			for each, value in users[user_id].iteritems():
+				userlist[each] = value
+		return userlist
+
+newuser = User()
+print newuser.listUsers("S")
+print newuser.unallocated("S")
+
+print newuser.getUser("thi34", "F")

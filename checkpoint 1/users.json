@@ -17,7 +17,8 @@
         "staff": {
             "as60": {
                 "accomodation": "N/A", 
-                "username": "AS"
+                "username": "AS",
+                "office" : ""
             }, 
             "asa76": {
                 "accomodation": "N/A", 
