@@ -1,4 +1,4 @@
-import json, random
+import json, random, os
 
 class User(object):
 	def __init__(self):
@@ -55,7 +55,6 @@ class User(object):
 			if user_type == "F":
 				users = data["users"]["fellows"]
 				for key in users:
-					#print users[key]
 					if "office" not in users[key] or users[key]["office"] == "":
 						office.append(key)
 
@@ -73,6 +72,28 @@ class User(object):
 				userlist = {"office": office}
 		return userlist
 
+	def view_unallocated(self, user_type):
+		os.system('clear')
+		to_print = self.unallocated(user_type)
+		if user_type == "F":
+			print "FELLOWS"
+			print "********************************************************************"
+			print "To Allocate Living Space"
+			living = to_print["living"]
+			for item in living:
+				user_details = self.getUser(item, user_type)
+				if user_details["accomodation"] == "Y":
+					print user_details["username"]
+			print "\n"
+		if user_type == "S":
+			print "STAFF"
+			print "********************************************************************"
+		print "To Allocate Office Space"
+		office = to_print["office"]
+		for member in office:
+			user_details = self.getUser(member, user_type)
+			print user_details["username"]
+
 
 	def listUsers(self, user_type):
 		userlist = "ID\t Name \t\t Living Space\n"
@@ -86,26 +107,20 @@ class User(object):
 				utype = "Staff"
 
 		for key in users:
-			#print users[key]
-			userlist = userlist + key + "\t"
-			for each, value in users[key].iteritems():
-				userlist = userlist + value + "\t\t"
+			userlist = userlist + users[key]["username"] + "\t\t" + user_type + "\t" +  users[key]["accomodation"] + "\t"
 
 			userlist = userlist + "\n"
 		return userlist
 
 	def getUser(self, user_id, user_type):
 		userlist = {}
-		#users = ""
 		with open('users.json', 'r') as f:
 			data = json.load(f)
 			if user_type == "F":
 				users = data["users"]["fellows"]
 			elif user_type == "S":
 				users = data["users"]["staff"]
-			print users
 		if user_id in users:
-			#print users[key]
 			userlist["userID"] = user_id
 			for each, value in users[user_id].iteritems():
 				userlist[each] = value

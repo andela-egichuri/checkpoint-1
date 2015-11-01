@@ -11,7 +11,10 @@ class Allocation(object):
 		space = room.Room()
 		availableRooms = space.available(room_type)
 		if len(availableRooms) <= 0:
-			print "Sorry, there are no more available rooms"
+			if room_type == "O":
+				print "Sorry, there are no more available office spaces"
+			elif room_type == "L":
+				print "Sorry, there are no more available living spaces"
 		else:
 			rand_room = random.choice(availableRooms)
 			space.addMember(rand_room, room_type, member)

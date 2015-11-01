@@ -1,25 +1,29 @@
-import user, room, json, random, os
+import user, room, json, random, os, allocation
 selection = ""
-def readInput(filename, src):
-	with open(filename, 'r') as f:
-		if src == "rooms":
-			for line in f:
-				newroom = room.Room()
-				words = line.split("\t")
-				newroom.room_type = words[1].upper().strip()
-				newroom.name = words[0].upper().strip()
-				newroom.room_id = newroom.name[0:3].lower() + str((random.randint(10,100)))
-				newroom.saveRoom()
 
-		elif src == "users":
-			for line in f:
-				newuser = user.User()
-				words = line.split("\t")
-				newuser.user_type = words[1].upper().strip()
-				newuser.user_name = words[0].upper().strip()
-				newuser.accomodation = words[2].upper().strip()
-				newuser.user_id = newuser.user_name[0:3].lower() + str((random.randint(10,100)))
-				newuser.saveUser()
+def readInput(filename, src):
+	try:
+		with open(filename, 'r') as f:
+			if src == "rooms":
+				for line in f:
+					newroom = room.Room()
+					words = line.split("\t")
+					newroom.room_type = words[1].upper().strip()
+					newroom.name = words[0].upper().strip()
+					newroom.room_id = newroom.name[0:3].lower() + str((random.randint(10,100)))
+					newroom.saveRoom()
+
+			elif src == "users":
+				for line in f:
+					newuser = user.User()
+					words = line.split("\t")
+					newuser.user_type = words[1].upper().strip()
+					newuser.user_name = words[0].upper().strip()
+					newuser.accomodation = words[2].upper().strip()
+					newuser.user_id = newuser.user_name[0:3].lower() + str((random.randint(10,100)))
+					newuser.saveUser()
+	except IOError as e:
+		print "File not found"
 
 
 def home():
@@ -28,7 +32,8 @@ def home():
 	print "********************************************************************"
 
 	print "Select an option below to continue"
-	selection = raw_input("1: Add users \n2: Add rooms \n3: View all users in the system \n4: View pending space allocation\n:")
+	selection = raw_input("1: Add users \n2: Add rooms \n3: View all users in the system \
+	 \n4: View users pending space allocation\n5: Allocate living and office space to users\n9: Exit\n:")
 	return selection
 
 
@@ -78,7 +83,7 @@ def showUsers():
 	user_type = raw_input("Select User Type\n S: Staff \n F: Fellow \n C: Cancel \n:").upper()
 
 	while user_type != "F" and user_type != "S" and user_type != "C":
-		user_type = raw_input("Try again.\nS: Staff \nF: Fellow \n C: Cancel \n:").upper()
+		user_type = raw_input("Try again.\n S: Staff \n F: Fellow \n C: Cancel \n:").upper()
 
 	if user_type == "C":
 		menu()
@@ -92,9 +97,11 @@ def showUsers():
 
 
 def menu():
-	selection = ""
+	try:
+		selection
+	except NameError:
+		selection = ""
 	while selection != "x":
-
 		# Add users
 		if selection == "1":
 			addUsers()
@@ -107,11 +114,42 @@ def menu():
 		elif selection == "3":
 			showUsers()
 
+		# View unallocated users
+		elif selection == "4":
+			user_type = raw_input("\n S: Staff \n F: Fellow \n C: Cancel \n:").upper()
+			while user_type != "F" and user_type != "S" and user_type != "C":
+				user_type = raw_input("Try again.\nS: Staff \nF: Fellow \n C: Cancel \n:").upper()
+
+			if user_type == "C":
+				menu()
+			else:
+				users = user.User()
+				users.view_unallocated(user_type)
+			action = raw_input("\n1: Continue \n:")
+			while action != "1":
+				action = raw_input("\n1: Continue \n:")
+			if action == "1":
+				menu()
 		# Allocate rooms
+		elif selection == "5":
+			user_type = raw_input("\n S: Staff \n F: Fellow \n C: Cancel \n:").upper()
+			while user_type != "F" and user_type != "S" and user_type != "C":
+				user_type = raw_input("Try again.\nS: Staff \nF: Fellow \n C: Cancel \n:").upper()
+
+			if user_type == "C":
+				menu()
+			else:
+				allocate = allocation.Allocation()
+				allocate.allocateAll(user_type)
+			action = raw_input("\n1: Continue \n:")
+			while action != "1":
+				action = raw_input("\n1: Continue \n:")
+			if action == "1":
+				menu()
 
 		# Print allocations
-
-		# View unallocated users
+		elif selection == "9":
+			selection = "x"
 
 		else:
 			selection = home()

@@ -21,10 +21,10 @@ class Room(object):
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
 	def addRoom(self):
-		room_type = raw_input("Enter Room Type: 1: Office space \n2: Living space: \n")
+		room_type = raw_input("Enter Room Type: \n 1: Office space \n 2: Living space: \n")
 
-		while user_type != "1" and user_type != "2":
-			room_type = raw_input("Try again. Enter Room Type: 1: Office space \n2: Living space: \n")
+		while room_type != "1" and room_type != "2":
+			room_type = raw_input("Try again. Enter Room Type:\n 1: Office space \n 2: Living space: \n")
 
 		if room_type == "1":
 			rtype = "O"
@@ -66,7 +66,6 @@ class Room(object):
 				room = data["rooms"]["living"]
 
 		for key in room:
-			#print key
 			roomlist.append(key)
 
 		return roomlist
@@ -80,7 +79,7 @@ class Room(object):
 		for eachroom in rooms:
 			occupants = self.members(eachroom, room_type)
 			if room_type == "O":
-				if len(occupants) < 4:
+				if len(occupants) < 6:
 					roomlist.append(eachroom)
 			elif room_type == "L":
 				if len(occupants) < 4:
@@ -118,3 +117,18 @@ class Room(object):
 		user_details =  users.getUser(member, user_type)
 
 		print "User " + user_details["username"] + " added to room " + room_id
+
+
+	def getRoom(self, room_id, room_type):
+		room_details = {}
+		with open('rooms.json', 'r') as f:
+			data = json.load(f)
+			if room_type == "L":
+				rooms = data["rooms"]["living"]
+			elif room_type == "O":
+				rooms = data["rooms"]["office"]
+		if room_id in rooms:
+			room_details["roomID"] = room_id
+			for each, value in rooms[room_id].iteritems():
+				room_details[each] = value
+		return room_details
