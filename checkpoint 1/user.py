@@ -1,5 +1,4 @@
-import json
-import random
+import json, random
 
 class User(object):
 	def __init__(self):
@@ -7,11 +6,10 @@ class User(object):
 		self.user_name = ""
 		self.accomodation = ""
 		self.user_id = ""
-		
 
 	def saveUser(self):
 		tosave = {"username" : self.user_name,  "accomodation" : self.accomodation}
-				
+
 		with open("users.json", "r+") as data_file:
 			data = json.load(data_file)
 			if self.user_type == "F":
@@ -20,9 +18,9 @@ class User(object):
 				data["users"]["staff"][self.user_id] = tosave
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
- 
 
-	def addUser(self):		
+
+	def addUser(self):
 		user_type = raw_input("User Type? Enter S for staff and F for fellow: \n").upper()
 
 		while user_type != "F" and user_type != "S":
@@ -39,11 +37,11 @@ class User(object):
 			accomodation = "N/A"
 
 		self.user_type = user_type
-		self.user_name = name  
+		self.user_name = name
 		self.accomodation = accomodation
 		self.user_id = self.user_name[0:3].lower() + str((random.randint(10,100)))
 
-		self.saveUser() 
+		self.saveUser()
 
 
 	def printUsers(self, user_type):
@@ -54,31 +52,31 @@ class User(object):
 		living = []
 		with open('users.json', 'r') as f:
 			data = json.load(f)
-			if user_type == "F":				
+			if user_type == "F":
 				users = data["users"]["fellows"]
 				for key in users:
-					#print users[key]				
+					#print users[key]
 					if "office" not in users[key] or users[key]["office"] == "":
 						office.append(key)
 
 					if "living" not in users[key] or users[key]["living"] == "":
 						living.append(key)
 				userlist = {"office": office, "living" : living}
-			
+
 			elif user_type == "S":
 				users = data["users"]["staff"]
 				for key in users:
-					#print users[key]				
+					#print users[key]
 					if "office" not in users[key] or users[key]["office"] == "":
-						office.append(key)			
+						office.append(key)
 
 				userlist = {"office": office}
 				'''userlist = userlist + key + "\t" + user_type + "\t"
 					for each, value in users[key].iteritems():
-						userlist = userlist + value + "\t\t" 
+						userlist = userlist + value + "\t\t"
 					userlist = userlist + "\n"	'''
-		
-				
+
+
 		return userlist
 
 
@@ -100,8 +98,8 @@ class User(object):
 			userlist = userlist + "\n"
 		return userlist
 
-	def getUser(self, user_id, user_type):	
-		userlist = {}	
+	def getUser(self, user_id, user_type):
+		userlist = {}
 		with open('users.json', 'r') as f:
 			data = json.load(f)
 			if user_type == "F":
@@ -116,10 +114,11 @@ class User(object):
 				userlist[each] = value
 		return userlist
 
-newuser = User()
+'''newuser = User()
 #print newuser.listUsers("S")
 print newuser.unallocated("S")
 print "\n Fellows"
 print newuser.unallocated("F")
 
 #print newuser.getUser("thi34", "F")
+'''

@@ -1,4 +1,4 @@
-import random, json 
+import random, json
 
 class Room(object):
 	def __init__(self):
@@ -30,7 +30,7 @@ class Room(object):
 		with open('rooms.json', 'r') as f:
 			data = json.load(f)
 			rooms = data["rooms"][rtype]
-			
+
 
 		for keys in rooms:
 			if keys == room_id:
@@ -46,12 +46,12 @@ class Room(object):
 		with open('rooms.json', 'r') as f:
 			data = json.load(f)
 			if room_type == "O":
-				rooms = data["rooms"]["offices"]
+				room = data["rooms"]["offices"]
 			elif room_type == "L":
-				rooms = data["rooms"]["living"]
+				room = data["rooms"]["living"]
 
-		for key in rooms:
-			#print key		
+		for key in room:
+			#print key
 			roomlist.append(key)
 
 		return roomlist
@@ -74,13 +74,25 @@ class Room(object):
 
 
 	def addMember(self, room_id, room_type, member):
-		print room_id, room_type, member
-
-		with open("rooms.json", "r+") as data_file:
+		#print room_id, room_type, member
+		if room_type == "L":
+			rtype = "living"
+		elif room_type == "O":
+			rtype = "office"
+		'''with open("rooms.json", "r+") as data_file:
 			data = json.load(data_file)
-			if room_type == "L":
-				data["rooms"]["living"][room_id]["occupants"].append(member)
-			elif room_type == "O":
-				data["rooms"]["offices"][room_id]["occupants"].append(member)
+			data["rooms"][rtype][room_id]["occupants"].append(member)
+			data_file.seek(0)  # rewind to beginning of file
+			data_file.write(json.dumps(data, indent=4, sort_keys=True)) '''
+
+		with open("users.json", "r+") as data_file:
+			data = json.load(data_file)
+			if member in data["users"]["staff"]:
+				data["users"]["staff"][member][rtype] = room_id
+			elif member in data["users"]["fellows"]:
+				data["users"]["fellows"][member][rtype] = room_id
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
+
+myroom = Room()
+myroom.addMember("nam11", "O", "asa802")

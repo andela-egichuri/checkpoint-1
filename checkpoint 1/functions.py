@@ -15,11 +15,11 @@ def readInput(filename, src):
 			for line in f:
 				newuser = user.User()
 				words = line.split("\t")
-				print "save " 
+				print "save "
 				print words
 				print "\n"
 				newuser.user_type = words[1].upper().strip()
 				newuser.user_name = words[0].upper().strip()
-				newuser.accomodation = words[2].upper().strip()	
+				newuser.accomodation = words[2].upper().strip()
 				newuser.user_id = newuser.user_name[0:3].lower() + str((random.randint(10,100)))
 				newuser.saveUser()

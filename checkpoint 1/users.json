@@ -3,6 +3,7 @@
         "fellows": {
             "asa80": {
                 "accomodation": "N", 
+                "office": "nam11", 
                 "username": "ASASSD DSD"
             }, 
             "sad59": {
@@ -17,8 +18,8 @@
         "staff": {
             "as60": {
                 "accomodation": "N/A", 
-                "username": "AS",
-                "office" : ""
+                "office": "nam11", 
+                "username": "AS"
             }, 
             "asa76": {
                 "accomodation": "N/A", 
