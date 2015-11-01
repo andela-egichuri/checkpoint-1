@@ -114,21 +114,23 @@ class Room(object):
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
 		users = user.User()
-		user_details =  users.getUser(member, user_type)
+		user_details =  users.getUser(member)
 
 		print "User " + user_details["username"] + " added to room " + room_id
 
 
-	def getRoom(self, room_id, room_type):
+	def getRoom(self, room_id):
 		room_details = {}
 		with open('rooms.json', 'r') as f:
 			data = json.load(f)
-			if room_type == "L":
-				rooms = data["rooms"]["living"]
-			elif room_type == "O":
-				rooms = data["rooms"]["office"]
+			rooms = data["rooms"]["living"]
+			rooms1 = data["rooms"]["office"]
 		if room_id in rooms:
 			room_details["roomID"] = room_id
 			for each, value in rooms[room_id].iteritems():
+				room_details[each] = value
+		if room_id in rooms1:
+			room_details["roomID"] = room_id
+			for each, value in rooms1[room_id].iteritems():
 				room_details[each] = value
 		return room_details

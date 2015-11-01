@@ -65,7 +65,6 @@ class User(object):
 			elif user_type == "S":
 				users = data["users"]["staff"]
 				for key in users:
-					#print users[key]
 					if "office" not in users[key] or users[key]["office"] == "":
 						office.append(key)
 
@@ -81,7 +80,7 @@ class User(object):
 			print "To Allocate Living Space"
 			living = to_print["living"]
 			for item in living:
-				user_details = self.getUser(item, user_type)
+				user_details = self.getUser(item)
 				if user_details["accomodation"] == "Y":
 					print user_details["username"]
 			print "\n"
@@ -91,12 +90,12 @@ class User(object):
 		print "To Allocate Office Space"
 		office = to_print["office"]
 		for member in office:
-			user_details = self.getUser(member, user_type)
+			user_details = self.getUser(member)
 			print user_details["username"]
 
 
 	def listUsers(self, user_type):
-		userlist = "ID\t Name \t\t Living Space\n"
+		userlist = "Name\t User Type \t\t Living Space\n"
 		with open('users.json', 'r') as f:
 			data = json.load(f)
 			if user_type == "F":
@@ -112,16 +111,18 @@ class User(object):
 			userlist = userlist + "\n"
 		return userlist
 
-	def getUser(self, user_id, user_type):
+	def getUser(self, user_id):
 		userlist = {}
 		with open('users.json', 'r') as f:
 			data = json.load(f)
-			if user_type == "F":
-				users = data["users"]["fellows"]
-			elif user_type == "S":
-				users = data["users"]["staff"]
-		if user_id in users:
+			users1 = data["users"]["fellows"]
+			users2 = data["users"]["staff"]
+		if user_id in users1:
 			userlist["userID"] = user_id
-			for each, value in users[user_id].iteritems():
+			for each, value in users1[user_id].iteritems():
+				userlist[each] = value
+		if user_id in users2:
+			userlist["userID"] = user_id
+			for each, value in users2[user_id].iteritems():
 				userlist[each] = value
 		return userlist

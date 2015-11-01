@@ -2,67 +2,37 @@
     "rooms": {
         "living": {
             "roo31": {
-                "name": "ROOM3", 
-                "occupants": [
-                    "thi34", 
-                    "thi24"
-                ]
-            }, 
+                "name": "ROOM3",
+                "occupants": []
+            },
             "roo38": {
-                "name": "ROOM1", 
-                "occupants": [
-                    "sad54", 
-                    "sad59"
-                ]
+                "name": "ROOM1",
+                "occupants": []
             }
-        }, 
+        },
         "office": {
             "nam11": {
-                "name": "NAME", 
-                "occupants": [
-                    "as76", 
-                    "thi70", 
-                    "nam25", 
-                    "asa80", 
-                    "thi24"
-                ]
-            }, 
+                "name": "NAME",
+                "occupants": []
+            },
             "nam18": {
-                "name": "NAME", 
+                "name": "NAME",
                 "occupants": [
-                    "thi34", 
-                    "thi34", 
-                    "nsa49", 
-                    "as60"
-                ]
-            }, 
-            "nam34": {
-                "name": "NAME", 
-                "occupants": [
-                    "nsa45", 
-                    "thi72", 
-                    "sad54", 
-                    "sad59"
-                ]
-            }, 
-            "roo38": {
-                "name": "ROOM2", 
-                "occupants": [
-                    "nam48", 
-                    "sas14", 
-                    "cac42", 
-                    "asa10", 
+                    "thi34",
                     "thi34"
                 ]
-            }, 
+            },
+            "nam34": {
+                "name": "NAME",
+                "occupants": []
+            },
+            "roo38": {
+                "name": "ROOM2",
+                "occupants": []
+            },
             "tan53": {
-                "name": "TANDAO", 
-                "occupants": [
-                    "asa97", 
-                    "cac37", 
-                    "sas35", 
-                    "asa76"
-                ]
+                "name": "TANDAO",
+                "occupants": []
             }
         }
     }

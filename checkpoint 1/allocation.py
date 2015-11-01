@@ -18,7 +18,6 @@ class Allocation(object):
 		else:
 			rand_room = random.choice(availableRooms)
 			space.addMember(rand_room, room_type, member)
-		print len(availableRooms)
 
 
 	def allocateAll(self, user_type):
@@ -33,7 +32,7 @@ class Allocation(object):
 		#Allocate living spaces only to fellows
 		if user_type == "F":
 			for member in toallocate["living"]:
-				user_details =  users.getUser(member, user_type)
+				user_details =  users.getUser(member)
 				if user_details["accomodation"] == "Y":
 					self.allocate("L", member)
 

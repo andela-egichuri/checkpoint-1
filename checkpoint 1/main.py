@@ -34,7 +34,7 @@ def home():
 	print "Select an option below to continue"
 	selection = raw_input("1: Add users \n2: Add rooms \n3: View all allocations \n4: View allocations per room \
 	 \n5: View all users in the system \n6: View users pending space allocation \
-	 \n7: Allocate living and office space to users\n9: Exit\n:")
+	 \n7: Allocate living and office space to users\n8: View available rooms\n9: Exit\n:")
 	return selection
 
 
@@ -110,6 +110,31 @@ def menu():
 		# Add rooms
 		elif selection == "2":
 			addRooms()
+
+		# View all allocations
+		elif selection == "3":
+			print "\n"
+			room_inst = room.Room()
+			roomlist = room_inst.rooms("O")
+			roomlist = roomlist + room_inst.rooms("L")
+			for roomid in roomlist:
+				userlist = ""
+				users = user.User()
+				room_details = room_inst.getRoom(roomid)
+				room_members = room_details["occupants"]
+				if len(room_details["occupants"]) > 0:
+					print room_details["name"]
+				for member in room_members:
+					user_details =  users.getUser(member)
+					userlist = userlist + user_details["username"] + ", "
+				if len(room_details["occupants"]) > 0:
+					print userlist + "\n"
+			action = raw_input("\n1: Continue \n:")
+			while action != "1":
+				action = raw_input("\n1: Continue \n:")
+			if action == "1":
+				menu()
+
 		# Print members per room
 		elif selection == "4":
 			print "\n"
@@ -127,16 +152,17 @@ def menu():
 			room_inst = room.Room()
 			roomlist = room_inst.rooms(rtype)
 			for each in roomlist:
-				theroom = room_inst.getRoom(each, rtype)
+				theroom = room_inst.getRoom(each)
 				print " " + theroom["name"] + "\t(Room ID: " + theroom["roomID"] + ")"
-			selected = raw_input("\nEnter Room ID \n:")
+			selected = raw_input("\nEnter Room ID \n:").lower()
 			for roomid in roomlist:
 				users = user.User()
 				if roomid == selected:
-					room_details = room_inst.getRoom(selected, rtype)
-					room_members = room_details[occupants]
+					room_details = room_inst.getRoom(selected)
+					room_members = room_details["occupants"]
 					for member in room_members:
-						user_details =  users.getUser(member, user_type)
+						user_details =  users.getUser(member)
+						print user_details["username"]
 			action = raw_input("\n1: Continue \n:")
 			while action != "1":
 				action = raw_input("\n1: Continue \n:")
@@ -175,6 +201,30 @@ def menu():
 			else:
 				allocate = allocation.Allocation()
 				allocate.allocateAll(user_type)
+			action = raw_input("\n1: Continue \n:")
+			while action != "1":
+				action = raw_input("\n1: Continue \n:")
+			if action == "1":
+				menu()
+
+		elif selection == "8":
+			space = room.Room()
+			print "\n"
+			print "AVAILABLE OFFICE SPACES"
+			print "*****************************************************"
+			availableOffices = space.available("O")
+			for each in availableOffices:
+				details = space.getRoom(each)
+				av = 6 - len(details["occupants"])
+				print details["name"] + ": " + str(av) + " Spaces"
+			print "\n"
+			print "AVAILABLE LIVING SPACES"
+			print "*****************************************************"
+			availableLiving = space.available("L")
+			for each in availableLiving:
+				details = space.getRoom(each)
+				av = 4 - len(details["occupants"])
+				print details["name"] + ": " + str(av) + " Spaces"
 			action = raw_input("\n1: Continue \n:")
 			while action != "1":
 				action = raw_input("\n1: Continue \n:")

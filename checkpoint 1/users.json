@@ -2,109 +2,85 @@
     "users": {
         "fellows": {
             "asa10": {
-                "accomodation": "N", 
-                "office": "roo38", 
+                "accomodation": "N",
                 "username": "ASASSD DSD"
-            }, 
+            },
             "asa80": {
-                "accomodation": "N", 
-                "office": "nam11", 
+                "accomodation": "N",
                 "username": "ASASSD DSD"
-            }, 
+            },
             "sad54": {
-                "accomodation": "Y", 
-                "living": "roo38", 
-                "office": "nam34", 
+                "accomodation": "Y",
                 "username": "SADSFD"
-            }, 
+            },
             "sad59": {
-                "accomodation": "Y", 
-                "living": "roo38", 
-                "office": "nam34", 
+                "accomodation": "Y",
                 "username": "SADSFD"
-            }, 
+            },
             "thi24": {
-                "accomodation": "Y", 
-                "living": "roo31", 
-                "office": "nam11", 
+                "accomodation": "Y",
                 "username": "THIS FELLOW"
-            }, 
+            },
             "thi34": {
-                "accomodation": "Y", 
-                "living": "roo31", 
-                "office": "roo38", 
+                "accomodation": "Y",
                 "username": "THIS FELLOW"
             }
-        }, 
+        },
         "staff": {
             "as60": {
-                "accomodation": "N/A", 
-                "office": "nam18", 
+                "accomodation": "N/A",
                 "username": "AS"
-            }, 
+            },
             "as76": {
-                "accomodation": "N/A", 
-                "office": "nam11", 
+                "accomodation": "N/A",
                 "username": "AS"
-            }, 
+            },
             "asa76": {
-                "accomodation": "N/A", 
-                "office": "tan53", 
+                "accomodation": "N/A",
                 "username": "ASAS"
-            }, 
+            },
             "asa97": {
-                "accomodation": "N/A", 
-                "office": "tan53", 
+                "accomodation": "N/A",
                 "username": "ASAS"
-            }, 
+            },
             "cac37": {
-                "accomodation": "N/A", 
-                "office": "tan53", 
+                "accomodation": "N/A",
                 "username": "CACACA"
-            }, 
+            },
             "cac42": {
-                "accomodation": "N/A", 
-                "office": "roo38", 
+                "accomodation": "N/A",
                 "username": "CACACA"
-            }, 
+            },
             "nam25": {
-                "accomodation": "N/A", 
-                "office": "nam11", 
+                "accomodation": "N/A",
                 "username": "NAME"
-            }, 
+            },
             "nam48": {
-                "accomodation": "N/A", 
-                "office": "roo38", 
+                "accomodation": "N/A",
                 "username": "NAME"
-            }, 
+            },
             "nsa45": {
-                "accomodation": "N/A", 
-                "office": "nam34", 
+                "accomodation": "N/A",
                 "username": "NSAMA"
-            }, 
+            },
             "nsa49": {
-                "accomodation": "N/A", 
-                "office": "nam18", 
+                "accomodation": "N/A",
                 "username": "NSAMA"
-            }, 
+            },
             "sas14": {
-                "accomodation": "N/A", 
-                "office": "roo38", 
+                "accomodation": "N/A",
                 "username": "SASAS"
-            }, 
+            },
             "sas35": {
-                "accomodation": "N/A", 
-                "office": "tan53", 
+                "accomodation": "N/A",
                 "username": "SASAS"
-            }, 
+            },
             "thi70": {
-                "accomodation": "N/A", 
-                "office": "nam11", 
+                "accomodation": "N/A",
                 "username": "THIS STAFF"
-            }, 
+            },
             "thi72": {
-                "accomodation": "N/A", 
-                "office": "nam34", 
+                "accomodation": "N/A",
                 "username": "THIS STAFF"
             }
         }
