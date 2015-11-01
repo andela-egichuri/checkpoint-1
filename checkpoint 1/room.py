@@ -1,4 +1,4 @@
-import random, json
+import random, json, user
 
 class Room(object):
 	def __init__(self):
@@ -16,7 +16,7 @@ class Room(object):
 			if self.room_type == "L":
 				data["rooms"]["living"][self.room_id] = tosave
 			elif self.room_type == "O":
-				data["rooms"]["offices"][self.room_id] = tosave
+				data["rooms"]["office"][self.room_id] = tosave
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
@@ -24,7 +24,7 @@ class Room(object):
 	def members(self, room_id, room_type):
 		memberlist = []
 		if room_type == "O":
-			rtype = "offices"
+			rtype = "office"
 		elif room_type == "L":
 			rtype = "living"
 		with open('rooms.json', 'r') as f:
@@ -46,7 +46,7 @@ class Room(object):
 		with open('rooms.json', 'r') as f:
 			data = json.load(f)
 			if room_type == "O":
-				room = data["rooms"]["offices"]
+				room = data["rooms"]["office"]
 			elif room_type == "L":
 				room = data["rooms"]["living"]
 
@@ -75,24 +75,31 @@ class Room(object):
 
 	def addMember(self, room_id, room_type, member):
 		#print room_id, room_type, member
+		user_type = ""
+
 		if room_type == "L":
 			rtype = "living"
 		elif room_type == "O":
 			rtype = "office"
-		'''with open("rooms.json", "r+") as data_file:
+
+		with open("rooms.json", "r+") as data_file:
 			data = json.load(data_file)
 			data["rooms"][rtype][room_id]["occupants"].append(member)
 			data_file.seek(0)  # rewind to beginning of file
-			data_file.write(json.dumps(data, indent=4, sort_keys=True)) '''
+			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
 		with open("users.json", "r+") as data_file:
 			data = json.load(data_file)
 			if member in data["users"]["staff"]:
 				data["users"]["staff"][member][rtype] = room_id
+				user_type = "S"
 			elif member in data["users"]["fellows"]:
 				data["users"]["fellows"][member][rtype] = room_id
+				user_type = "F"
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
-myroom = Room()
-myroom.addMember("nam11", "O", "asa802")
+		users = user.User()
+		user_details =  users.getUser(member, user_type)
+
+		print "User " + user_details["username"] + " added to room " + room_id

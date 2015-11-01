@@ -71,12 +71,6 @@ class User(object):
 						office.append(key)
 
 				userlist = {"office": office}
-				'''userlist = userlist + key + "\t" + user_type + "\t"
-					for each, value in users[key].iteritems():
-						userlist = userlist + value + "\t\t"
-					userlist = userlist + "\n"	'''
-
-
 		return userlist
 
 
@@ -100,25 +94,17 @@ class User(object):
 
 	def getUser(self, user_id, user_type):
 		userlist = {}
+		#users = ""
 		with open('users.json', 'r') as f:
 			data = json.load(f)
 			if user_type == "F":
 				users = data["users"]["fellows"]
 			elif user_type == "S":
 				users = data["users"]["staff"]
-
+			print users
 		if user_id in users:
 			#print users[key]
 			userlist["userID"] = user_id
 			for each, value in users[user_id].iteritems():
 				userlist[each] = value
 		return userlist
-
-'''newuser = User()
-#print newuser.listUsers("S")
-print newuser.unallocated("S")
-print "\n Fellows"
-print newuser.unallocated("F")
-
-#print newuser.getUser("thi34", "F")
-'''

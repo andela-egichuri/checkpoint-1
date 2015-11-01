@@ -27,18 +27,10 @@ class Allocation(object):
 		for member in toallocate["office"]:
 			self.allocate("O", member)
 
+		#Allocate living spaces only to fellows
 		if user_type == "F":
-			#Allocate living spaces
 			for member in toallocate["living"]:
-				if :
-					pass
-					pass
-				pass
+				user_details =  users.getUser(member, user_type)
+				if user_details["accomodation"] == "Y":
+					self.allocate("L", member)
 
-		#print toallocate
-
-
-newallocation = Allocation()
-newallocation.allocateAll("S")
-print "\n"
-newallocation.allocateAll("F")

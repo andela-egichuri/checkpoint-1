@@ -2,47 +2,45 @@
     "users": {
         "fellows": {
             "asa80": {
-                "accomodation": "N", 
-                "office": "nam11", 
+                "accomodation": "N",
                 "username": "ASASSD DSD"
-            }, 
+            },
             "sad59": {
-                "accomodation": "Y", 
+                "accomodation": "Y",
                 "username": "SADSFD"
-            }, 
+            },
             "thi34": {
-                "accomodation": "Y", 
+                "accomodation": "Y",
                 "username": "THIS FELLOW"
             }
-        }, 
+        },
         "staff": {
             "as60": {
-                "accomodation": "N/A", 
-                "office": "nam11", 
+                "accomodation": "N/A",
                 "username": "AS"
-            }, 
+            },
             "asa76": {
-                "accomodation": "N/A", 
+                "accomodation": "N/A",
                 "username": "ASAS"
-            }, 
+            },
             "cac37": {
-                "accomodation": "N/A", 
+                "accomodation": "N/A",
                 "username": "CACACA"
-            }, 
+            },
             "nam25": {
-                "accomodation": "N/A", 
+                "accomodation": "N/A",
                 "username": "NAME"
-            }, 
+            },
             "nsa49": {
-                "accomodation": "N/A", 
+                "accomodation": "N/A",
                 "username": "NSAMA"
-            }, 
+            },
             "sas35": {
-                "accomodation": "N/A", 
+                "accomodation": "N/A",
                 "username": "SASAS"
-            }, 
+            },
             "thi72": {
-                "accomodation": "N/A", 
+                "accomodation": "N/A",
                 "username": "THIS STAFF"
             }
         }
