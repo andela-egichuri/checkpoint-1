@@ -75,17 +75,19 @@ class User(object):
 
 
 	def listUsers(self, user_type):
-		userlist = ""
+		userlist = "ID\t Name \t\t Living Space\n"
 		with open('users.json', 'r') as f:
 			data = json.load(f)
 			if user_type == "F":
 				users = data["users"]["fellows"]
+				utype = "Fellow"
 			elif user_type == "S":
 				users = data["users"]["staff"]
+				utype = "Staff"
 
 		for key in users:
 			#print users[key]
-			userlist = userlist + key + "\t" + user_type + "\t"
+			userlist = userlist + key + "\t"
 			for each, value in users[key].iteritems():
 				userlist = userlist + value + "\t\t"
 

@@ -20,6 +20,21 @@ class Room(object):
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
+	def addRoom(self):
+		room_type = raw_input("Enter Room Type: 1: Office space \n2: Living space: \n")
+
+		while user_type != "1" and user_type != "2":
+			room_type = raw_input("Try again. Enter Room Type: 1: Office space \n2: Living space: \n")
+
+		if room_type == "1":
+			rtype = "O"
+		elif room_type == "2":
+			rtype = "L"
+		name = raw_input("Enter room name: \n").upper()
+		self.room_type = rtype
+		self.name = name
+		self.room_id = self.name[0:3].lower() + str((random.randint(10,100)))
+		self.saveRoom()
 
 	def members(self, room_id, room_type):
 		memberlist = []
