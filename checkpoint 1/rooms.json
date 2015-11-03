@@ -1,39 +1,6 @@
 {
     "rooms": {
-        "living": {
-            "roo31": {
-                "name": "ROOM3",
-                "occupants": []
-            },
-            "roo38": {
-                "name": "ROOM1",
-                "occupants": []
-            }
-        },
-        "office": {
-            "nam11": {
-                "name": "NAME",
-                "occupants": []
-            },
-            "nam18": {
-                "name": "NAME",
-                "occupants": [
-                    "thi34",
-                    "thi34"
-                ]
-            },
-            "nam34": {
-                "name": "NAME",
-                "occupants": []
-            },
-            "roo38": {
-                "name": "ROOM2",
-                "occupants": []
-            },
-            "tan53": {
-                "name": "TANDAO",
-                "occupants": []
-            }
-        }
+        "living": {},
+        "office": {}
     }
 }

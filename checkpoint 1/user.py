@@ -9,13 +9,30 @@ class User(object):
 
 	def saveUser(self):
 		tosave = {"username" : self.user_name,  "accomodation" : self.accomodation}
-
 		with open("users.json", "r+") as data_file:
 			data = json.load(data_file)
+			user_inst = User()
+			user_names = []
 			if self.user_type == "F":
-				data["users"]["fellows"][self.user_id] = tosave
+				fellow_list =  user_inst.users("F")
+				for each_user in fellow_list:
+					user_details = self.getUser(each_user)
+					user_names.append(user_details["username"])
+				if self.user_name not in user_names:
+					data["users"]["fellows"][self.user_id] = tosave
+					print "Member " + self.user_name +" added to the system"
+				else:
+					print "The member " + self.user_name +" is currently in the system"
 			elif self.user_type == "S":
-				data["users"]["staff"][self.user_id] = tosave
+				staff_list =  user_inst.users("S")
+				for each_user in staff_list:
+					user_details = self.getUser(each_user)
+					user_names.append(user_details["username"])
+				if self.user_name not in user_names:
+					data["users"]["staff"][self.user_id] = tosave
+					print "Member " + self.user_name +" added to the system"
+				else:
+					print "The member " + self.user_name +" is currently in the system"
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
@@ -45,7 +62,8 @@ class User(object):
 
 
 	def printUsers(self, user_type):
-		pass
+		users = user.User()
+		users.listUsers(user_type)
 
 	def unallocated(self, user_type):
 		office = []
@@ -110,6 +128,20 @@ class User(object):
 
 			userlist = userlist + "\n"
 		return userlist
+
+	def users(self, user_type):
+		user_ids = []
+		with open('users.json', 'r') as f:
+			data = json.load(f)
+			if user_type == "F":
+				users = data["users"]["fellows"]
+			elif user_type == "S":
+				users = data["users"]["staff"]
+
+		for key in users:
+			user_ids.append(key)
+
+		return user_ids
 
 	def getUser(self, user_id):
 		userlist = {}

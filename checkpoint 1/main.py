@@ -35,6 +35,8 @@ def home():
 	selection = raw_input("1: Add users \n2: Add rooms \n3: View all allocations \n4: View allocations per room \
 	 \n5: View all users in the system \n6: View users pending space allocation \
 	 \n7: Allocate living and office space to users\n8: View available rooms\n9: Exit\n:")
+	while selection not in str(range(1, 10)):
+		selection = raw_input("Try again:\nPlease enter a number between 1 - 10\n:")
 	return selection
 
 
@@ -91,8 +93,8 @@ def showUsers():
 	else:
 		print users.listUsers(user_type)
 	action = raw_input("\n1: Continue \n:")
-	while action != "1":
-		action = raw_input("\n1: Continue \n:")
+	while action != "1" and action != "2":
+		action = raw_input("Try again\n1: Continue \n:")
 	if action == "1":
 		menu()
 
@@ -103,6 +105,7 @@ def menu():
 	except NameError:
 		selection = ""
 	while selection != "x":
+		#print selection
 		# Add users
 		if selection == "1":
 			addUsers()
@@ -114,6 +117,7 @@ def menu():
 		# View all allocations
 		elif selection == "3":
 			print "\n"
+			to_print = ""
 			room_inst = room.Room()
 			roomlist = room_inst.rooms("O")
 			roomlist = roomlist + room_inst.rooms("L")
@@ -123,16 +127,24 @@ def menu():
 				room_details = room_inst.getRoom(roomid)
 				room_members = room_details["occupants"]
 				if len(room_details["occupants"]) > 0:
-					print room_details["name"]
+					#print room_details["name"]
+					to_print = to_print + room_details["name"] + " (" + room_details["room_type"] + ")\n"
 				for member in room_members:
 					user_details =  users.getUser(member)
 					userlist = userlist + user_details["username"] + ", "
 				if len(room_details["occupants"]) > 0:
-					print userlist + "\n"
-			action = raw_input("\n1: Continue \n:")
-			while action != "1":
-				action = raw_input("\n1: Continue \n:")
+					#print userlist + "\n"
+					to_print = to_print + userlist + "\n\n"
+			print to_print
+			action = raw_input("\n1: Print\n2: Continue \n:")
+			while action != "1" and action != "2":
+				action = raw_input("Try again.\n1: Print\n2: Continue \n:")
 			if action == "1":
+				print "Printing to Allocations.txt"
+				with open("Allocations.txt", "w+") as file:
+					file.write(to_print)
+				menu()
+			elif action == "2":
 				menu()
 
 		# Print members per room
@@ -165,7 +177,7 @@ def menu():
 						print user_details["username"]
 			action = raw_input("\n1: Continue \n:")
 			while action != "1":
-				action = raw_input("\n1: Continue \n:")
+				action = raw_input("Try again:\n1: Continue \n:")
 			if action == "1":
 				menu()
 
@@ -186,7 +198,7 @@ def menu():
 				users.view_unallocated(user_type)
 			action = raw_input("\n1: Continue \n:")
 			while action != "1":
-				action = raw_input("\n1: Continue \n:")
+				action = raw_input("Try again:\n1: Continue \n:")
 			if action == "1":
 				menu()
 
@@ -203,7 +215,7 @@ def menu():
 				allocate.allocateAll(user_type)
 			action = raw_input("\n1: Continue \n:")
 			while action != "1":
-				action = raw_input("\n1: Continue \n:")
+				action = raw_input("Try again\n1: Continue \n:")
 			if action == "1":
 				menu()
 
@@ -227,12 +239,13 @@ def menu():
 				print details["name"] + ": " + str(av) + " Spaces"
 			action = raw_input("\n1: Continue \n:")
 			while action != "1":
-				action = raw_input("\n1: Continue \n:")
+				action = raw_input("Try again\n1: Continue \n:")
 			if action == "1":
 				menu()
 
-		elif selection == "9":
+		elif selection == "9" or selection == 9:
 			selection = "x"
+			break
 
 		else:
 			selection = home()

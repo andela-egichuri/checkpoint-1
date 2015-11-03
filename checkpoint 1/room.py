@@ -13,10 +13,28 @@ class Room(object):
 
 		with open("rooms.json", "r+") as data_file:
 			data = json.load(data_file)
+			room_inst = Room()
+			room_names = []
 			if self.room_type == "L":
-				data["rooms"]["living"][self.room_id] = tosave
+				room_list =  room_inst.rooms("L")
+				for each_room in room_list:
+					room_details = room_inst.getRoom(each_room)
+					room_names.append(room_details["name"])
+				if self.name not in room_names:
+					data["rooms"]["living"][self.room_id] = tosave
+					print "Room " + self.name +" added to the system"
+				else:
+					print "The room " + self.name +" is currently in the system"
 			elif self.room_type == "O":
-				data["rooms"]["office"][self.room_id] = tosave
+				room_list =  room_inst.rooms("O")
+				for each_room in room_list:
+					room_details = room_inst.getRoom(each_room)
+					room_names.append(room_details["name"])
+				if self.name not in room_names:
+					data["rooms"]["office"][self.room_id] = tosave
+					print "Room " + self.name +" added to the system"
+				else:
+					print "The room " + self.name +" is currently in the system"
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
@@ -127,10 +145,14 @@ class Room(object):
 			rooms1 = data["rooms"]["office"]
 		if room_id in rooms:
 			room_details["roomID"] = room_id
+			room_details["room_type"] = "LIVING"
 			for each, value in rooms[room_id].iteritems():
 				room_details[each] = value
 		if room_id in rooms1:
 			room_details["roomID"] = room_id
+			room_details["room_type"] = "LIVING"
 			for each, value in rooms1[room_id].iteritems():
 				room_details[each] = value
 		return room_details
+
+
