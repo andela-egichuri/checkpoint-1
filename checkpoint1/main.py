@@ -64,8 +64,8 @@ def home():
 	print "Select an option below to continue"
 	selection = raw_input("1: Add users \n2: Add rooms \n3: View all allocations \n4: View allocations per room \
 	 \n5: View all users in the system \n6: View users pending space allocation \
-	 \n7: Allocate living and office space to users\n8: View available rooms\n9: Exit\n:")
-	while selection not in str(range(1, 10)):
+	 \n7: Allocate living and office space to users\n8: View available rooms\n9: Reset data \n10: Exit\n:")
+	while selection not in str(range(1, 11)):
 		selection = raw_input("Try again:\nPlease enter a number between 1 - 10\n:")
 	return selection
 
@@ -136,7 +136,7 @@ def menu():
 		selection
 	except NameError:
 		selection = ""
-	while selection != "9":
+	while selection != "10":
 
 		# Add users
 		if selection == "1":
