@@ -1,4 +1,8 @@
-import user, room, json, random, os, allocation
+import user
+import room
+import json
+import random
+import os
 
 f_path = os.path.dirname(os.path.abspath(__file__))
 data_path = os.path.join(f_path, "data")
@@ -9,23 +13,31 @@ room_data = os.path.join(f_path, "data/rooms.json")
 alloc_data = os.path.join(f_path, "data/Allocations.txt")
 
 #Create the data files if they don't exist
-try:
-	with open(user_data) as file:
-		pass
-except IOError:
-	with open(user_data, 'w+') as file:
-		data = {"users": {"fellows": {},"staff": {}}}
-		file.write(json.dumps(data, indent=4, sort_keys=True))
+def check_files():
+	try:
+		with open(user_data) as file:
+			pass
+	except IOError:
+		with open(user_data, 'w+') as file:
+			data = {"users": {"fellows": {},"staff": {}}}
+			file.write(json.dumps(data, indent=4, sort_keys=True))
 
-try:
-	with open(room_data) as file:
-		pass
-except IOError:
-	with open(room_data, "w+") as file:
-		data = {"rooms": {"living": {},"office": {}}}
-		file.write(json.dumps(data, indent=4, sort_keys=True))
+	try:
+		with open(room_data) as file:
+			pass
+	except IOError:
+		with open(room_data, "w+") as file:
+			data = {"rooms": {"living": {},"office": {}}}
+			file.write(json.dumps(data, indent=4, sort_keys=True))
 
-# This function reads the data entered using a text file and passes 
+	try:
+		with open(alloc_data) as file:
+			pass
+	except IOError:
+		with open(alloc_data, 'w+') as file:
+			pass
+
+# This function reads the data entered using a text file and passes
 # it to the saveRoom() function
 def readInput(filename, src):
 	try:
@@ -54,6 +66,38 @@ def readInput(filename, src):
 	except IOError as e:
 		print "File not found"
 
+
+def allocate(room_type, member):
+	#Check if there are available rooms
+	space = room.Room()
+	available_rooms = space.available(room_type)
+	if len(available_rooms) <= 0:
+		if room_type == "O":
+			print "Sorry, there are no more available office spaces"
+		elif room_type == "L":
+			print "Sorry, there are no more available living spaces"
+	else:
+
+		#Add members to rooms if there is space available
+		rand_room = random.choice(available_rooms)
+		space.addMember(rand_room, room_type, member)
+
+
+def allocateAll(user_type):
+	#Get unallocated users
+	users = user.User()
+	to_allocate = users.unallocated(user_type)
+
+	#Allocate office spaces
+	for member in to_allocate["office"]:
+		allocate("O", member)
+
+	#Allocate living spaces only to fellows
+	if user_type == "F":
+		for member in to_allocate["living"]:
+			user_details =  users.getUser(member)
+			if user_details["accomodation"] == "Y":
+				allocate("L", member)
 
 #Menu options for the system
 def home():
@@ -132,6 +176,7 @@ def showUsers():
 
 #Menu options
 def menu():
+	check_files()
 	try:
 		selection
 	except NameError:
@@ -241,8 +286,8 @@ def menu():
 			if user_type == "C":
 				menu()
 			else:
-				allocate = allocation.Allocation()
-				allocate.allocateAll(user_type)
+				#allocate = allocation.Allocation()
+				allocateAll(user_type)
 			action = raw_input("\n1: Continue \n:")
 			while action != "1":
 				action = raw_input("Try again\n1: Continue \n:")
@@ -286,6 +331,7 @@ def menu():
 				os.remove(room_data)
 				os.remove(alloc_data)
 				print("Files Removed!")
+				check_files()
 				menu()
 			elif action == "2":
 				menu()

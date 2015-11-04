@@ -1,4 +1,6 @@
-import json, random, os
+import json
+import random
+import os
 
 class User(object):
 
@@ -38,7 +40,7 @@ class User(object):
 					print "Member " + self.user_name +" added to the system"
 				else:
 					print "The member " + self.user_name +" is currently in the system"
-			data_file.seek(0) 
+			data_file.seek(0)
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
 	#Add user data manually
