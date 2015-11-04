@@ -14,7 +14,7 @@ The text file should be in the format:
 
 The user type should be either "F" for Fellow or "S" for staff
 
-Accomodation should be either "Y" or "No" for fellows and blank or "N/A" for staff
+Accomodation should be either "Y" or "N" for fellows and blank or "N/A" for staff
 
 ### Adding rooms
 Rooms can be added either by entering data manually or using a text file.
