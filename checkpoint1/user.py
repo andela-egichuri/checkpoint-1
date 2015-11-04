@@ -1,6 +1,7 @@
 import json, random, os
 
 class User(object):
+
 	def __init__(self):
 		self.user_type = ""
 		self.user_name = ""
@@ -10,6 +11,7 @@ class User(object):
 		self.user_data = os.path.join(self.f_path, "data/users.json")
 		self.room_data = os.path.join(self.f_path, "data/rooms.json")
 
+	#Save user to data file
 	def saveUser(self):
 		tosave = {"username" : self.user_name,  "accomodation" : self.accomodation}
 		with open(self.user_data, "r+") as data_file:
@@ -36,10 +38,10 @@ class User(object):
 					print "Member " + self.user_name +" added to the system"
 				else:
 					print "The member " + self.user_name +" is currently in the system"
-			data_file.seek(0)  # rewind to beginning of file
+			data_file.seek(0) 
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
-
+	#Add user data manually
 	def addUser(self):
 		user_type = raw_input("User Type? Enter S for staff and F for fellow: \n").upper()
 
@@ -63,12 +65,7 @@ class User(object):
 
 		self.saveUser()
 
-
-	def printUsers(self, user_type):
-		users = user.User()
-		users.listUsers(user_type)
-
-
+	#Return a list of unallocated users
 	def unallocated(self, user_type):
 		office = []
 		living = []
@@ -93,6 +90,7 @@ class User(object):
 				userlist = {"office": office}
 		return userlist
 
+	#View users yet to be allocated either a living space or an office space
 	def view_unallocated(self, user_type):
 		os.system('clear')
 		to_print = self.unallocated(user_type)
@@ -115,7 +113,7 @@ class User(object):
 			user_details = self.getUser(member)
 			print user_details["username"]
 
-
+	#Display all users
 	def listUsers(self, user_type):
 		userlist = "Name\t User Type \t\t Living Space\n"
 		with open(self.user_data, 'r') as f:
@@ -133,6 +131,7 @@ class User(object):
 			userlist = userlist + "\n"
 		return userlist
 
+	#Return a list of all users of a given type (Either fellow or staff)
 	def users(self, user_type):
 		user_ids = []
 		with open(self.user_data, 'r') as f:
@@ -147,6 +146,7 @@ class User(object):
 
 		return user_ids
 
+	#Get details of a given user
 	def getUser(self, user_id):
 		userlist = {}
 		with open(self.user_data, 'r') as f:

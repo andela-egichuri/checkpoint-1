@@ -25,7 +25,8 @@ except IOError:
 		data = {"rooms": {"living": {},"office": {}}}
 		file.write(json.dumps(data, indent=4, sort_keys=True))
 
-# This function reads the data entered using a text file
+# This function reads the data entered using a text file and passes 
+# it to the saveRoom() function
 def readInput(filename, src):
 	try:
 		with open(filename, 'r') as f:
@@ -68,7 +69,7 @@ def home():
 		selection = raw_input("Try again:\nPlease enter a number between 1 - 10\n:")
 	return selection
 
-
+#Give the option to either enter user data manually or from a file
 def addUsers():
 	print "\n"
 	print "ADD USERS"
@@ -89,6 +90,7 @@ def addUsers():
 	elif source == "3":
 		menu()
 
+#Give the option to either enter room data manually or from a file
 def addRooms():
 	print "\n"
 	print "ADD ROOMS"
@@ -108,6 +110,7 @@ def addRooms():
 		menu()
 
 
+#Display users
 def showUsers():
 	users = user.User()
 	print "View USERS"
@@ -127,7 +130,7 @@ def showUsers():
 	if action == "1":
 		menu()
 
-
+#Menu options
 def menu():
 	try:
 		selection
@@ -248,6 +251,7 @@ def menu():
 			if action == "1":
 				menu()
 
+		#Display available spaces per room
 		elif selection == "8":
 			space = room.Room()
 			print "\n"

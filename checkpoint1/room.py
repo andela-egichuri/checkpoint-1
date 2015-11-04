@@ -13,6 +13,7 @@ class Room(object):
 		self.user_data = os.path.join(self.f_path, "data/users.json")
 		self.room_data = os.path.join(self.f_path, "data/rooms.json")
 
+	#Save the data received from the addRoom() and resdInput() functions to a json file
 	def saveRoom(self):
 		tosave = {"name" : self.name,  "occupants" : self.occupants}
 
@@ -43,6 +44,7 @@ class Room(object):
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
+	#Functions to add rooms manually
 	def addRoom(self):
 		room_type = raw_input("Enter Room Type: \n 1: Office space \n 2: Living space: \n")
 
@@ -59,6 +61,7 @@ class Room(object):
 		self.room_id = self.name[0:3].lower() + str((random.randint(10,100)))
 		self.saveRoom()
 
+	#Return a list of all members in a given room
 	def members(self, room_id, room_type):
 		memberlist = []
 		if room_type == "O":
@@ -73,12 +76,11 @@ class Room(object):
 		for keys in rooms:
 			if keys == room_id:
 				for key, value in rooms[keys].iteritems():
-					#print each, value
 					if key == "occupants":
 						memberlist = value
 		return memberlist
 
-
+	#Return a list of all rooms in the system
 	def rooms(self, room_type):
 		roomlist = []		
 		with open(self.room_data, 'r') as f:
@@ -94,7 +96,7 @@ class Room(object):
 		return roomlist
 
 
-
+	#Return a list of all available rooms
 	def available(self, room_type):
 		roomlist = []
 		rooms = self.rooms(room_type)
@@ -108,9 +110,8 @@ class Room(object):
 					roomlist.append(eachroom)
 		return roomlist
 
-
+	#Add a given member to a room
 	def addMember(self, room_id, room_type, member):
-		#print room_id, room_type, member
 		user_type = ""
 
 		if room_type == "L":
@@ -121,7 +122,7 @@ class Room(object):
 		with open(self.room_data, "r+") as data_file:
 			data = json.load(data_file)
 			data["rooms"][rtype][room_id]["occupants"].append(member)
-			data_file.seek(0)  # rewind to beginning of file
+			data_file.seek(0)  
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
 		with open(self.user_data, "r+") as data_file:
@@ -132,7 +133,7 @@ class Room(object):
 			elif member in data["users"]["fellows"]:
 				data["users"]["fellows"][member][rtype] = room_id
 				user_type = "F"
-			data_file.seek(0)  # rewind to beginning of file
+			data_file.seek(0)
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
 		users = user.User()
@@ -140,7 +141,7 @@ class Room(object):
 
 		print "User " + user_details["username"] + " added to room " + room_id
 
-
+	#Retrieve the details of a given room
 	def getRoom(self, room_id):
 		room_details = {}
 		with open(self.room_data, 'r') as f:
