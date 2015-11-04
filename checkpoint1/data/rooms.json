@@ -1,6 +1,160 @@
 {
     "rooms": {
-        "living": {},
-        "office": {}
+        "living": {
+            "l0156": {
+                "name": "L01 ROOM", 
+                "occupants": [
+                    "ger54"
+                ]
+            }, 
+            "l0230": {
+                "name": "L02 ROOM", 
+                "occupants": [
+                    "col37", 
+                    "han31"
+                ]
+            }, 
+            "l0398": {
+                "name": "L03 ROOM", 
+                "occupants": [
+                    "ben33"
+                ]
+            }, 
+            "l0499": {
+                "name": "L04 ROOM", 
+                "occupants": [
+                    "nat48", 
+                    "tho61"
+                ]
+            }, 
+            "l0597": {
+                "name": "L05 ROOM", 
+                "occupants": []
+            }, 
+            "l0667": {
+                "name": "L06 ROOM", 
+                "occupants": [
+                    "sta35"
+                ]
+            }, 
+            "l0752": {
+                "name": "L07 ROOM", 
+                "occupants": [
+                    "joa31"
+                ]
+            }, 
+            "l0886": {
+                "name": "L08 ROOM", 
+                "occupants": [
+                    "bri65", 
+                    "lew98"
+                ]
+            }, 
+            "l0975": {
+                "name": "L09 ROOM", 
+                "occupants": [
+                    "jer97", 
+                    "chr11", 
+                    "mah96", 
+                    "ale77"
+                ]
+            }, 
+            "l1011": {
+                "name": "L10 ROOM", 
+                "occupants": [
+                    "ale92", 
+                    "gan17"
+                ]
+            }
+        }, 
+        "office": {
+            "o0145": {
+                "name": "O01 ROOM", 
+                "occupants": [
+                    "joa31", 
+                    "kev39", 
+                    "ben33", 
+                    "mic37", 
+                    "jac41"
+                ]
+            }, 
+            "o0244": {
+                "name": "O02 ROOM", 
+                "occupants": [
+                    "jer97", 
+                    "chr11", 
+                    "tho61"
+                ]
+            }, 
+            "o0330": {
+                "name": "O03 ROOM", 
+                "occupants": [
+                    "gan17", 
+                    "ted33", 
+                    "han31", 
+                    "sta76", 
+                    "rob98"
+                ]
+            }, 
+            "o0455": {
+                "name": "O04 ROOM", 
+                "occupants": [
+                    "mah96", 
+                    "ant68"
+                ]
+            }, 
+            "o0510": {
+                "name": "O05 ROOM", 
+                "occupants": [
+                    "col37", 
+                    "nat48", 
+                    "osc37"
+                ]
+            }, 
+            "o0626": {
+                "name": "O06 ROOM", 
+                "occupants": []
+            }, 
+            "o0728": {
+                "name": "O07 ROOM", 
+                "occupants": [
+                    "jee56", 
+                    "bri65", 
+                    "nya73"
+                ]
+            }, 
+            "o0867": {
+                "name": "O08 ROOM", 
+                "occupants": [
+                    "sta35", 
+                    "hel89", 
+                    "jos72"
+                ]
+            }, 
+            "o0911": {
+                "name": "O09 ROOM", 
+                "occupants": [
+                    "eug15", 
+                    "lew98", 
+                    "mes74", 
+                    "god79", 
+                    "eva73", 
+                    "chr86"
+                ]
+            }, 
+            "o1088": {
+                "name": "O10 ROOM", 
+                "occupants": [
+                    "ale92", 
+                    "eri56", 
+                    "ger54", 
+                    "ale77"
+                ]
+            }, 
+            "roo72": {
+                "name": "room name", 
+                "occupants": []
+            }
+        }
     }
 }

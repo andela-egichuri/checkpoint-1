@@ -6,10 +6,13 @@ class User(object):
 		self.user_name = ""
 		self.accomodation = ""
 		self.user_id = ""
+		self.f_path = os.path.dirname(os.path.abspath(__file__))
+		self.user_data = os.path.join(self.f_path, "data/users.json")
+		self.room_data = os.path.join(self.f_path, "data/rooms.json")
 
 	def saveUser(self):
 		tosave = {"username" : self.user_name,  "accomodation" : self.accomodation}
-		with open("users.json", "r+") as data_file:
+		with open(self.user_data, "r+") as data_file:
 			data = json.load(data_file)
 			user_inst = User()
 			user_names = []
@@ -65,10 +68,11 @@ class User(object):
 		users = user.User()
 		users.listUsers(user_type)
 
+
 	def unallocated(self, user_type):
 		office = []
 		living = []
-		with open('users.json', 'r') as f:
+		with open(self.user_data, 'r') as f:
 			data = json.load(f)
 			if user_type == "F":
 				users = data["users"]["fellows"]
@@ -114,7 +118,7 @@ class User(object):
 
 	def listUsers(self, user_type):
 		userlist = "Name\t User Type \t\t Living Space\n"
-		with open('users.json', 'r') as f:
+		with open(self.user_data, 'r') as f:
 			data = json.load(f)
 			if user_type == "F":
 				users = data["users"]["fellows"]
@@ -131,7 +135,7 @@ class User(object):
 
 	def users(self, user_type):
 		user_ids = []
-		with open('users.json', 'r') as f:
+		with open(self.user_data, 'r') as f:
 			data = json.load(f)
 			if user_type == "F":
 				users = data["users"]["fellows"]
@@ -145,16 +149,15 @@ class User(object):
 
 	def getUser(self, user_id):
 		userlist = {}
-		with open('users.json', 'r') as f:
+		with open(self.user_data, 'r') as f:
 			data = json.load(f)
 			users1 = data["users"]["fellows"]
 			users2 = data["users"]["staff"]
+		userlist["userID"] = user_id
 		if user_id in users1:
-			userlist["userID"] = user_id
 			for each, value in users1[user_id].iteritems():
 				userlist[each] = value
 		if user_id in users2:
-			userlist["userID"] = user_id
 			for each, value in users2[user_id].iteritems():
 				userlist[each] = value
 		return userlist

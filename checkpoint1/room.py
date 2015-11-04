@@ -1,4 +1,7 @@
-import random, json, user
+import random
+import json 
+import user
+import os
 
 class Room(object):
 	def __init__(self):
@@ -6,12 +9,14 @@ class Room(object):
 		self.name = ""
 		self.occupants = []
 		self.room_id = ""
-
+		self.f_path = os.path.dirname(os.path.abspath(__file__))
+		self.user_data = os.path.join(self.f_path, "data/users.json")
+		self.room_data = os.path.join(self.f_path, "data/rooms.json")
 
 	def saveRoom(self):
 		tosave = {"name" : self.name,  "occupants" : self.occupants}
 
-		with open("rooms.json", "r+") as data_file:
+		with open(self.room_data, "r+") as data_file:
 			data = json.load(data_file)
 			room_inst = Room()
 			room_names = []
@@ -60,7 +65,7 @@ class Room(object):
 			rtype = "office"
 		elif room_type == "L":
 			rtype = "living"
-		with open('rooms.json', 'r') as f:
+		with open(self.room_data, 'r') as f:
 			data = json.load(f)
 			rooms = data["rooms"][rtype]
 
@@ -75,8 +80,8 @@ class Room(object):
 
 
 	def rooms(self, room_type):
-		roomlist = []
-		with open('rooms.json', 'r') as f:
+		roomlist = []		
+		with open(self.room_data, 'r') as f:
 			data = json.load(f)
 			if room_type == "O":
 				room = data["rooms"]["office"]
@@ -91,7 +96,6 @@ class Room(object):
 
 
 	def available(self, room_type):
-		#occupied = room.Room()
 		roomlist = []
 		rooms = self.rooms(room_type)
 		for eachroom in rooms:
@@ -114,13 +118,13 @@ class Room(object):
 		elif room_type == "O":
 			rtype = "office"
 
-		with open("rooms.json", "r+") as data_file:
+		with open(self.room_data, "r+") as data_file:
 			data = json.load(data_file)
 			data["rooms"][rtype][room_id]["occupants"].append(member)
 			data_file.seek(0)  # rewind to beginning of file
 			data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
-		with open("users.json", "r+") as data_file:
+		with open(self.user_data, "r+") as data_file:
 			data = json.load(data_file)
 			if member in data["users"]["staff"]:
 				data["users"]["staff"][member][rtype] = room_id
@@ -139,7 +143,7 @@ class Room(object):
 
 	def getRoom(self, room_id):
 		room_details = {}
-		with open('rooms.json', 'r') as f:
+		with open(self.room_data, 'r') as f:
 			data = json.load(f)
 			rooms = data["rooms"]["living"]
 			rooms1 = data["rooms"]["office"]
@@ -150,7 +154,7 @@ class Room(object):
 				room_details[each] = value
 		if room_id in rooms1:
 			room_details["roomID"] = room_id
-			room_details["room_type"] = "LIVING"
+			room_details["room_type"] = "OFFICE"
 			for each, value in rooms1[room_id].iteritems():
 				room_details[each] = value
 		return room_details

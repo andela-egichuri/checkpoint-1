@@ -1,6 +1,31 @@
 import user, room, json, random, os, allocation
 selection = ""
 
+f_path = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(f_path, "data")
+
+
+user_data = os.path.join(f_path, "data/users.json")
+room_data = os.path.join(f_path, "data/rooms.json")
+
+#Create the data files if they don't exist
+try:
+	with open(user_data) as file:
+		pass
+except IOError:
+	with open(user_data, 'w+') as file:
+		data = {"users": {"fellows": {},"staff": {}}}
+		file.write(json.dumps(data, indent=4, sort_keys=True))
+
+try:
+	with open(room_data) as file:
+		pass
+except IOError:
+	with open(room_data, "w+") as file:
+		data = {"rooms": {"living": {},"office": {}}}
+		file.write(json.dumps(data, indent=4, sort_keys=True))
+
+# This function reads the data entered using a text file
 def readInput(filename, src):
 	try:
 		with open(filename, 'r') as f:
@@ -19,13 +44,17 @@ def readInput(filename, src):
 					words = line.split("\t")
 					newuser.user_type = words[1].upper().strip()
 					newuser.user_name = words[0].upper().strip()
-					newuser.accomodation = words[2].upper().strip()
+					if newuser.user_type == "F":
+						newuser.accomodation = words[2].upper().strip()
+					else:
+						newuser.accomodation = "N/A"
 					newuser.user_id = newuser.user_name[0:3].lower() + str((random.randint(10,100)))
 					newuser.saveUser()
 	except IOError as e:
 		print "File not found"
 
 
+#Menu options for the system
 def home():
 	os.system('clear')
 	print "MENU OPTIONS"
@@ -56,7 +85,7 @@ def addUsers():
 		newuser.addUser()
 	elif source == "2":
 		data_file = raw_input("Enter file name (including the file extension)\n")
-		readInput(data_file, "users")
+		readInput(data_path + "/" + data_file, "users")
 	elif source == "3":
 		menu()
 
@@ -74,7 +103,7 @@ def addRooms():
 		newroom.addRoom()
 	elif source == "2":
 		data_file = raw_input("Enter file name (including the file extension)\n")
-		readInput(data_file, "rooms")
+		readInput(data_path + "/" + data_file, "rooms")
 	elif source == "3":
 		menu()
 
@@ -141,7 +170,7 @@ def menu():
 				action = raw_input("Try again.\n1: Print\n2: Continue \n:")
 			if action == "1":
 				print "Printing to Allocations.txt"
-				with open("Allocations.txt", "w+") as file:
+				with open(data_path + "/Allocations.txt", "w+") as file:
 					file.write(to_print)
 				menu()
 			elif action == "2":
