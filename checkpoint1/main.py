@@ -1,5 +1,4 @@
 import user, room, json, random, os, allocation
-selection = ""
 
 f_path = os.path.dirname(os.path.abspath(__file__))
 data_path = os.path.join(f_path, "data")
@@ -136,8 +135,7 @@ def menu():
 		selection
 	except NameError:
 		selection = ""
-	while selection != "x":
-		#print selection
+	while selection != "9":
 		# Add users
 		if selection == "1":
 			addUsers()
@@ -159,13 +157,11 @@ def menu():
 				room_details = room_inst.getRoom(roomid)
 				room_members = room_details["occupants"]
 				if len(room_details["occupants"]) > 0:
-					#print room_details["name"]
 					to_print = to_print + room_details["name"] + " (" + room_details["room_type"] + ")\n"
 				for member in room_members:
 					user_details =  users.getUser(member)
 					userlist = userlist + user_details["username"] + ", "
 				if len(room_details["occupants"]) > 0:
-					#print userlist + "\n"
 					to_print = to_print + userlist + "\n\n"
 			print to_print
 			action = raw_input("\n1: Print\n2: Continue \n:")
@@ -275,10 +271,6 @@ def menu():
 				action = raw_input("Try again\n1: Continue \n:")
 			if action == "1":
 				menu()
-
-		elif selection == "9" or selection == 9:
-			selection = "x"
-			break
 
 		else:
 			selection = home()
