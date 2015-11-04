@@ -284,7 +284,9 @@ def menu():
 			if action == "1":
 				os.remove(user_data)
 				os.remove(room_data)
+				os.remove(alloc_data)
 				print("Files Removed!")
+				menu()
 			elif action == "2":
 				menu()
 
