@@ -136,6 +136,7 @@ def menu():
 	except NameError:
 		selection = ""
 	while selection != "9":
+
 		# Add users
 		if selection == "1":
 			addUsers()
@@ -272,7 +273,22 @@ def menu():
 			if action == "1":
 				menu()
 
+		#Reset data files
+		elif selection == "9":
+			print ("This will delete the user and room data in the system.")
+			print ("Are you sure you want to continue?")
+			action = raw_input("\n1: Yes \n2: Cancel\n:")
+			while action != "1" and action != "2":
+				action = raw_input("Try again\n1: Yes \n2: Cancel\n:")
+			if action == "1":
+				os.remove(user_data)
+				os.remove(room_data)
+				print("Files Removed!")
+			elif action == "2":
+				menu()
+
 		else:
 			selection = home()
+
 
 menu()
