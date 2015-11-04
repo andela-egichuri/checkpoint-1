@@ -6,6 +6,7 @@ data_path = os.path.join(f_path, "data")
 
 user_data = os.path.join(f_path, "data/users.json")
 room_data = os.path.join(f_path, "data/rooms.json")
+alloc_data = os.path.join(f_path, "data/Allocations.txt")
 
 #Create the data files if they don't exist
 try:
