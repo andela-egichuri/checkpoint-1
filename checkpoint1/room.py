@@ -4,14 +4,14 @@ import user
 import os
 
 class Room(object):
-	def __init__(self):
+	def __init__(self, d_path=os.path.dirname(os.path.abspath(__file__))):
 		self.room_type = ""
 		self.name = ""
 		self.occupants = []
 		self.room_id = ""
-		self.f_path = os.path.dirname(os.path.abspath(__file__))
-		self.user_data = os.path.join(self.f_path, "data/users.json")
-		self.room_data = os.path.join(self.f_path, "data/rooms.json")
+		self.d_path = d_path
+		self.user_data = os.path.join(self.d_path, "data/users.json")
+		self.room_data = os.path.join(self.d_path, "data/rooms.json")
 
 	#Save the data received from the addRoom() and resdInput() functions to a json file
 	def saveRoom(self):

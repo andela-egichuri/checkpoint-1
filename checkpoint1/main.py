@@ -4,13 +4,13 @@ import json
 import random
 import os
 
-f_path = os.path.dirname(os.path.abspath(__file__))
-data_path = os.path.join(f_path, "data")
+d_path = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(d_path, "data")
 
 
-user_data = os.path.join(f_path, "data/users.json")
-room_data = os.path.join(f_path, "data/rooms.json")
-alloc_data = os.path.join(f_path, "data/Allocations.txt")
+user_data = os.path.join(d_path, "data/users.json")
+room_data = os.path.join(d_path, "data/rooms.json")
+alloc_data = os.path.join(d_path, "data/Allocations.txt")
 
 #Create the data files if they don't exist
 def check_files():
@@ -181,7 +181,7 @@ def menu():
 		selection
 	except NameError:
 		selection = ""
-	while selection != "10":
+	while True:
 
 		# Add users
 		if selection == "1":
@@ -335,6 +335,9 @@ def menu():
 				menu()
 			elif action == "2":
 				menu()
+
+		elif selection == "10":
+			break
 
 		else:
 			selection = home()

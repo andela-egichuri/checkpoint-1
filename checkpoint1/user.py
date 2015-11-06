@@ -4,14 +4,14 @@ import os
 
 class User(object):
 
-	def __init__(self):
+	def __init__(self, d_path=os.path.dirname(os.path.abspath(__file__))):
 		self.user_type = ""
 		self.user_name = ""
 		self.accomodation = ""
 		self.user_id = ""
-		self.f_path = os.path.dirname(os.path.abspath(__file__))
-		self.user_data = os.path.join(self.f_path, "data/users.json")
-		self.room_data = os.path.join(self.f_path, "data/rooms.json")
+		self.d_path = d_path
+		self.user_data = os.path.join(self.d_path, "data/users.json")
+		self.room_data = os.path.join(self.d_path, "data/rooms.json")
 
 	#Save user to data file
 	def saveUser(self):

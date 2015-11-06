@@ -1,6 +1,194 @@
 {
     "users": {
-        "fellows": {}, 
-        "staff": {}
+        "fellows": {
+            "ale21": {
+                "accomodation": "Y", 
+                "living": "l1087", 
+                "office": "o0274", 
+                "username": "ALEX KANG'ETHE"
+            }, 
+            "ale33": {
+                "accomodation": "Y", 
+                "living": "l0691", 
+                "office": "o0274", 
+                "username": "ALEX MWALEH"
+            }, 
+            "ben25": {
+                "accomodation": "Y", 
+                "living": "l0873", 
+                "office": "o0441", 
+                "username": "BENJAMIN KAGIA"
+            }, 
+            "bri21": {
+                "accomodation": "Y", 
+                "living": "l1087", 
+                "office": "o0938", 
+                "username": "BRIAN MOSIGISI"
+            }, 
+            "chr11": {
+                "accomodation": "Y", 
+                "living": "l0691", 
+                "office": "o0441", 
+                "username": "CHRISTOPHER VUNDI"
+            }, 
+            "col80": {
+                "accomodation": "Y", 
+                "living": "l0873", 
+                "office": "o0552", 
+                "username": "COLLIN MUTEMBEI"
+            }, 
+            "eri40": {
+                "accomodation": "N", 
+                "office": "o0938", 
+                "username": "ERIC GICHURI"
+            }, 
+            "eug26": {
+                "accomodation": "N", 
+                "office": "o0353", 
+                "username": "EUGENE MUTAI"
+            }, 
+            "gan83": {
+                "accomodation": "Y", 
+                "living": "l0691", 
+                "office": "o0938", 
+                "username": "GANGA CHRIS"
+            }, 
+            "ger13": {
+                "accomodation": "Y", 
+                "living": "l0873", 
+                "office": "o0441", 
+                "username": "GERTRUDE NYENYESHI"
+            }, 
+            "han98": {
+                "accomodation": "Y", 
+                "living": "l0249", 
+                "office": "o0166", 
+                "username": "HANNAH KOSKE"
+            }, 
+            "jee14": {
+                "accomodation": "N", 
+                "office": "o0166", 
+                "username": "JEE GITHINJI"
+            }, 
+            "jer61": {
+                "accomodation": "Y", 
+                "living": "l0786", 
+                "office": "o0274", 
+                "username": "JEREMY KITHOME"
+            }, 
+            "joa85": {
+                "accomodation": "Y", 
+                "living": "l1087", 
+                "office": "o0353", 
+                "username": "JOAN NGATIA"
+            }, 
+            "kev22": {
+                "accomodation": "N", 
+                "office": "o0552", 
+                "username": "KEVIN GATHUKU"
+            }, 
+            "lew99": {
+                "accomodation": "Y", 
+                "living": "l0691", 
+                "office": "o0747", 
+                "username": "LEWIS MAINA"
+            }, 
+            "mah78": {
+                "accomodation": "Y", 
+                "living": "l0873", 
+                "office": "o0631", 
+                "username": "MAHAD WALUSIMBI"
+            }, 
+            "nat94": {
+                "accomodation": "Y", 
+                "living": "l0127", 
+                "office": "o0166", 
+                "username": "NATE ARTIN"
+            }, 
+            "sta74": {
+                "accomodation": "N", 
+                "office": "o1084", 
+                "username": "STACEY ACHUNGO"
+            }, 
+            "sta99": {
+                "accomodation": "Y", 
+                "living": "l0249", 
+                "office": "o0441", 
+                "username": "STANLEY NDAGI"
+            }, 
+            "ted76": {
+                "accomodation": "N", 
+                "office": "o0938", 
+                "username": "TEDDY ASOLA"
+            }, 
+            "tho89": {
+                "accomodation": "Y", 
+                "living": "l0249", 
+                "office": "o0938", 
+                "username": "THOMAS NYAMBATI"
+            }
+        }, 
+        "staff": {
+            "ant92": {
+                "accomodation": "N/A", 
+                "office": "o0552", 
+                "username": "ANTHONY NANDAA"
+            }, 
+            "chr54": {
+                "accomodation": "N/A", 
+                "office": "o0938", 
+                "username": "CHRISTINA SASS"
+            }, 
+            "eva14": {
+                "accomodation": "N/A", 
+                "office": "o0274", 
+                "username": "EVAN GREENLOWE"
+            }, 
+            "god16": {
+                "accomodation": "N/A", 
+                "office": "o0552", 
+                "username": "GODSON UKPERE"
+            }, 
+            "hel34": {
+                "accomodation": "N/A", 
+                "office": "o0631", 
+                "username": "HELLEN MAINA"
+            }, 
+            "jac11": {
+                "accomodation": "N/A", 
+                "office": "o0631", 
+                "username": "JACKSON SAYA"
+            }, 
+            "jos86": {
+                "accomodation": "N/A", 
+                "office": "o0747", 
+                "username": "JOSHUA MWANIKI"
+            }, 
+            "mes76": {
+                "accomodation": "N/A", 
+                "office": "o0274", 
+                "username": "MESHACK NYABIBA"
+            }, 
+            "mic51": {
+                "accomodation": "N/A", 
+                "office": "o1084", 
+                "username": "MICHAEL ROSENBERG"
+            }, 
+            "nya58": {
+                "accomodation": "N/A", 
+                "office": "o0552", 
+                "username": "NYAMBURA KIHORO"
+            }, 
+            "osc26": {
+                "accomodation": "N/A", 
+                "office": "o0274", 
+                "username": "OSCAR OPONDO"
+            }, 
+            "rob58": {
+                "accomodation": "N/A", 
+                "office": "o0552", 
+                "username": "ROBERT OPIYO"
+            }
+        }
     }
 }

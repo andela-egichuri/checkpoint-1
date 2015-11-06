@@ -1,0 +1,14 @@
+{
+    "rooms": {
+        "living": {
+            "roo12": {
+                "name": "Room Test"
+            }
+        }, 
+        "office": {
+            "off13": {
+                "name": "office Test"
+            }
+        }
+    }
+}

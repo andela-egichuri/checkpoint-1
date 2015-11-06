@@ -1,6 +1,153 @@
 {
     "rooms": {
-        "living": {}, 
-        "office": {}
+        "living": {
+            "l0127": {
+                "name": "L01 ROOM", 
+                "occupants": [
+                    "nat94"
+                ]
+            }, 
+            "l0249": {
+                "name": "L02 ROOM", 
+                "occupants": [
+                    "tho89", 
+                    "sta99", 
+                    "han98"
+                ]
+            }, 
+            "l0338": {
+                "name": "L03 ROOM", 
+                "occupants": []
+            }, 
+            "l0424": {
+                "name": "L04 ROOM", 
+                "occupants": []
+            }, 
+            "l0568": {
+                "name": "L05 ROOM", 
+                "occupants": []
+            }, 
+            "l0691": {
+                "name": "L06 ROOM", 
+                "occupants": [
+                    "chr11", 
+                    "lew99", 
+                    "gan83", 
+                    "ale33"
+                ]
+            }, 
+            "l0786": {
+                "name": "L07 ROOM", 
+                "occupants": [
+                    "jer61"
+                ]
+            }, 
+            "l0873": {
+                "name": "L08 ROOM", 
+                "occupants": [
+                    "ger13", 
+                    "col80", 
+                    "ben25", 
+                    "mah78"
+                ]
+            }, 
+            "l0953": {
+                "name": "L09 ROOM", 
+                "occupants": []
+            }, 
+            "l1087": {
+                "name": "L10 ROOM", 
+                "occupants": [
+                    "ale21", 
+                    "joa85", 
+                    "bri21"
+                ]
+            }
+        }, 
+        "office": {
+            "o0166": {
+                "name": "O01 ROOM", 
+                "occupants": [
+                    "nat94", 
+                    "jee14", 
+                    "han98"
+                ]
+            }, 
+            "o0274": {
+                "name": "O02 ROOM", 
+                "occupants": [
+                    "mes76", 
+                    "osc26", 
+                    "eva14", 
+                    "jer61", 
+                    "ale21", 
+                    "ale33"
+                ]
+            }, 
+            "o0353": {
+                "name": "O03 ROOM", 
+                "occupants": [
+                    "joa85", 
+                    "eug26"
+                ]
+            }, 
+            "o0441": {
+                "name": "O04 ROOM", 
+                "occupants": [
+                    "chr11", 
+                    "ger13", 
+                    "ben25", 
+                    "sta99"
+                ]
+            }, 
+            "o0552": {
+                "name": "O05 ROOM", 
+                "occupants": [
+                    "nya58", 
+                    "ant92", 
+                    "god16", 
+                    "rob58", 
+                    "kev22", 
+                    "col80"
+                ]
+            }, 
+            "o0631": {
+                "name": "O06 ROOM", 
+                "occupants": [
+                    "jac11", 
+                    "hel34", 
+                    "mah78"
+                ]
+            }, 
+            "o0747": {
+                "name": "O07 ROOM", 
+                "occupants": [
+                    "jos86", 
+                    "lew99"
+                ]
+            }, 
+            "o0822": {
+                "name": "O08 ROOM", 
+                "occupants": []
+            }, 
+            "o0938": {
+                "name": "O09 ROOM", 
+                "occupants": [
+                    "chr54", 
+                    "tho89", 
+                    "ted76", 
+                    "gan83", 
+                    "eri40", 
+                    "bri21"
+                ]
+            }, 
+            "o1084": {
+                "name": "O10 ROOM", 
+                "occupants": [
+                    "mic51", 
+                    "sta74"
+                ]
+            }
+        }
     }
 }

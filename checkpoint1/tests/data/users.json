@@ -1,0 +1,16 @@
+{
+    "users": {
+        "fellows": {
+            "tes23": {
+                "accomodation": "Y", 
+                "username": "Test User"
+            }
+        }, 
+        "staff": {
+            "tes24": {
+                "accomodation": "N/A", 
+                "username": "Test Staff"
+            }
+        }
+    }
+}
