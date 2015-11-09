@@ -12,8 +12,11 @@ user_data = os.path.join(d_path, "data/users.json")
 room_data = os.path.join(d_path, "data/rooms.json")
 alloc_data = os.path.join(d_path, "data/Allocations.txt")
 
-#Create the data files if they don't exist
+
 def check_files():
+	'''
+	Create the data files if they don't exist
+	'''
 	try:
 		with open(user_data) as file:
 			pass
@@ -37,9 +40,12 @@ def check_files():
 		with open(alloc_data, 'w+') as file:
 			pass
 
-# This function reads the data entered using a text file and passes
-# it to the saveRoom() function
+
 def readInput(filename, src):
+	'''
+	This function reads the data entered using a text file and passes
+	it to the saveRoom() function
+	'''
 	try:
 		with open(filename, 'r') as f:
 			if src == "rooms":
@@ -68,7 +74,9 @@ def readInput(filename, src):
 
 
 def allocate(room_type, member):
-	#Check if there are available rooms
+	'''
+	Checks if there are available rooms
+	'''
 	space = room.Room()
 	available_rooms = space.available(room_type)
 	if len(available_rooms) <= 0:
@@ -84,7 +92,9 @@ def allocate(room_type, member):
 
 
 def allocateAll(user_type):
-	#Get unallocated users
+	'''
+	Gets unallocated users
+	'''
 	users = user.User()
 	to_allocate = users.unallocated(user_type)
 
@@ -99,8 +109,11 @@ def allocateAll(user_type):
 			if user_details["accomodation"] == "Y":
 				allocate("L", member)
 
-#Menu options for the system
+
 def home():
+	'''
+	Menu options for the system
+	'''
 	os.system('clear')
 	print "MENU OPTIONS"
 	print "********************************************************************"
@@ -113,8 +126,11 @@ def home():
 		selection = raw_input("Try again:\nPlease enter a number between 1 - 10\n:")
 	return selection
 
-#Give the option to either enter user data manually or from a file
+
 def addUsers():
+	'''
+	Give the option to either enter user data manually or from a file
+	'''
 	print "\n"
 	print "ADD USERS"
 	print "********************************************************************"
@@ -134,8 +150,11 @@ def addUsers():
 	elif source == "3":
 		menu()
 
-#Give the option to either enter room data manually or from a file
+
 def addRooms():
+	'''
+	Give the option to either enter room data manually or from a file
+	'''
 	print "\n"
 	print "ADD ROOMS"
 	print "********************************************************************"
@@ -154,8 +173,11 @@ def addRooms():
 		menu()
 
 
-#Display users
+
 def showUsers():
+	'''
+	Display users
+	'''
 	users = user.User()
 	print "View USERS"
 	print "********************************************************************"
@@ -174,8 +196,11 @@ def showUsers():
 	if action == "1":
 		menu()
 
-#Menu options
+
 def menu():
+	'''
+	Menu options
+	'''
 	check_files()
 	try:
 		selection
