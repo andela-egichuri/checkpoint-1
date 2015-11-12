@@ -3,7 +3,12 @@
         "fellows": {
             "tes23": {
                 "accomodation": "Y", 
+                "office": "off13", 
                 "username": "Test User"
+            }, 
+            "use12": {
+                "accomodation": "Y", 
+                "username": "User Testing"
             }
         }, 
         "staff": {

@@ -1,10 +1,14 @@
 import random
 import json
-import user
 import os
 
 
 class Room(object):
+    '''
+    The Room class defines the data and methods used in the system 
+    that are related to rooms
+    '''
+
 
     def __init__(self, d_path=os.path.dirname(os.path.abspath(__file__))):
         self.room_type = ""
@@ -17,7 +21,7 @@ class Room(object):
 
     def saveRoom(self):
         '''
-        Save the data received from the addRoom() and resdInput() functions to a json file
+        Save the data received from the addRoom() and readInput() functions to a json file
         '''
         tosave = {"name": self.name,  "occupants": self.occupants}
 
@@ -44,7 +48,7 @@ class Room(object):
                     print "Room " + self.name + " added to the system"
                 else:
                     print "The room " + self.name + " is currently in the system"
-            data_file.seek(0)  # rewind to beginning of file
+            data_file.seek(0)  
             data_file.write(json.dumps(data, indent=4, sort_keys=True))
 
     def addRoom(self):
@@ -148,11 +152,7 @@ class Room(object):
                 user_type = "F"
             data_file.seek(0)
             data_file.write(json.dumps(data, indent=4, sort_keys=True))
-
-        users = user.User()
-        user_details = users.getUser(member)
-
-        print "User " + user_details["username"] + " added to room " + room_id
+        print "User " + member + " added to room " + room_id
 
     def getRoom(self, room_id):
         '''

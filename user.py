@@ -4,12 +4,16 @@ import os
 
 
 class User(object):
+    '''
+    The User class defines the data and methods used in the system 
+    that are related to users
+    '''
 
     def __init__(self, d_path=os.path.dirname(os.path.abspath(__file__))):
-        '''self.user_type = ""
+        self.user_type = ""
         self.user_name = ""
         self.accomodation = ""
-        self.user_id = ""'''
+        self.user_id = ""
         self.d_path = d_path
         self.user_data = os.path.join(self.d_path, "data/users.json")
         self.room_data = os.path.join(self.d_path, "data/rooms.json")
@@ -18,8 +22,7 @@ class User(object):
         '''
         Save user to data file
         '''
-        tosave = {"username": self.user_name,
-                  "accomodation": self.accomodation}
+        tosave = {"username": self.user_name, "accomodation": self.accomodation}
         with open(self.user_data, "r+") as data_file:
             data = json.load(data_file)
             user_names = []
@@ -45,6 +48,7 @@ class User(object):
                     print "The member " + self.user_name + " is currently in the system"
             data_file.seek(0)
             data_file.write(json.dumps(data, indent=4, sort_keys=True))
+
 
     def addUser(self):
         '''
